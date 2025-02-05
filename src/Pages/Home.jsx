@@ -24,7 +24,7 @@ const HomePage = () => {
     <div>
       <Navbar />
       <div className='flex flex-col justify-start items-center'>
-        <h1 className='w-4/6 text-start text-3xl font-bold text-sky-500 mt-10 sm:text-center'>
+        <h1 className='text-3xl font-bold text-sky-500 mt-10 text-center border-b-3  border-sky-500'>
           Top Anime
         </h1>
         <div className='w-4/6 flex flex-wrap justify-center mt-5'>
