@@ -20,3 +20,4 @@ inspirasi web
 https://anilist.co/search/anime
 https://kitsu.app/explore/anime
 https://any-me.vercel.app/
+https://swiperjs.com/demos

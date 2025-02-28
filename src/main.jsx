@@ -3,6 +3,7 @@ import {createRoot} from 'react-dom/client';
 import './index.css';
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 import HomePage from './Pages/Home';
+import BookmarkPage from './Pages/Bookmark';
 
 const router = createBrowserRouter([
   {
@@ -10,8 +11,12 @@ const router = createBrowserRouter([
     element: <HomePage />,
   },
   {
-    path: '/home',
+    path: '/anime',
     element: <HomePage />,
+  },
+  {
+    path: '/bookmark',
+    element: <BookmarkPage />,
   },
 ]);
 

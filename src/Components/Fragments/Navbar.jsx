@@ -11,13 +11,18 @@ const Navbar = () => {
             </Link>
           </li>
           <li className='me-5'>
-            <Link to='/manga' className='hover:text-white/80'>
-              Manga
+            <Link to='/genre' className='hover:text-white/80'>
+              Genre
+            </Link>
+          </li>
+          <li className='me-5'>
+            <Link to='/bookmark' className='hover:text-white/80'>
+              Bookmark
             </Link>
           </li>
           <li className=''>
-            <Link to='/bookmark' className='hover:text-white/80'>
-              Bookmark
+            <Link to='/search' className='hover:text-white/80'>
+              Search
             </Link>
           </li>
         </ul>
