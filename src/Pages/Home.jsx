@@ -50,7 +50,7 @@ const HomePage = () => {
         pagination={{clickable: true}}
         navigation={false}
         modules={[Autoplay, Pagination]}
-        className='mySwiper h-130 w-5/6'
+        className='mySwiper h-130 w-5/6 shadow-2xl rounded-b-xl'
       >
         {popularAnime.map((item, index) => (
           <SwiperSlide key={item.mal_id}>
@@ -61,7 +61,7 @@ const HomePage = () => {
                 className='absolute top-0 left-0 w-full h-full object-cover'
               />
 
-              <div className='absolute inset-0 bg-black opacity-80'></div>
+              <div className='absolute inset-0 bg-black opacity-70'></div>
 
               <div className='relative z-10 text-justify w-full lg:w-4/6 lg:ms-10'>
                 <span className=' bg-sky-500 text-white px-3 py-1 rounded-lg font-bold text-lg'>
@@ -110,24 +110,51 @@ const HomePage = () => {
         ))}
       </Swiper>
 
-      <div className='flex flex-col justify-start items-center'>
-        <h1 className='text-3xl font-bold text-sky-500 mt-10 text-center border-b-3  border-sky-500'>
+      <div className='flex flex-col justify-center items-center'>
+        <h1 className='text-3xl font-bold text-sky-500 mt-10 border-b-3 border-sky-500'>
           Top Anime
         </h1>
         <div className='w-5/6 flex flex-wrap justify-center mt-5'>
-          {topAnime.map((item) => (
-            <Card key={item.mal_id}>
-              <Card.Header
-                title={item.title}
-                type={item.type}
-                source={item.source}
-              />
-              <Card.Body images={item.images.jpg.large_image_url} />
-              <Card.Footer score={item.score} studio={item.studios[0].name} />
-            </Card>
-          ))}
+          <Swiper
+            slidesPerView={1}
+            spaceBetween={10}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 4,
+                spaceBetween: 40,
+              },
+              1024: {
+                slidesPerView: 5,
+                spaceBetween: 50,
+              },
+            }}
+            modules={[Pagination]}
+            className='mySwiper'
+          >
+            {topAnime.map((item) => (
+              <SwiperSlide key={item.mal_id}>
+                <Card>
+                  <Card.Header
+                    title={item.title}
+                    type={item.type}
+                    source={item.source}
+                  />
+                  <Card.Body images={item.images.jpg.large_image_url} />
+                  <Card.Footer
+                    score={item.score}
+                    studio={item.studios[0].name}
+                  />
+                </Card>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
+
       <Tabs />
       {/* <Footer /> */}
     </div>

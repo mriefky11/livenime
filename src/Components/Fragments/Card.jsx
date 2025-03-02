@@ -29,8 +29,8 @@ const Footer = (props) => {
   const {score, studio} = props;
   return (
     <div>
-      <div className='text-sm font-semibold mt-1'>★ {score}/10</div>
-      <div className='font-bold text-blue-500 text-sm'>{studio}</div>
+      <div className='text-sm font-semibold mt-1 '>★ {score || '?'}/10</div>
+      <div className='font-bold text-blue-500 text-sm'>{studio || '?'}</div>
     </div>
   );
 };

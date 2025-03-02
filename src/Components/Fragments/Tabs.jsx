@@ -1,17 +1,32 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
+import {getAnimeSeason} from '../../Services/GetAnime';
+import Card from './Card';
 
 const Tabs = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const [animeList, setAnimelist] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const tabs = [
-    {title: 'Winter 2025', content: 'Ini adalah halaman winter.'},
-    {title: 'Spring 2025', content: 'Ini adalah halaman spring.'},
-    {title: 'Summer 2025', content: 'Ini adalah halaman summer.'},
-    {title: 'Fall 2025', content: 'Ini adalah halaman fall.'},
+    {title: 'Winter 2025', season: 'winter', year: 2025},
+    {title: 'Spring 2025', season: 'spring', year: 2025},
+    {title: 'Summer 2025', season: 'summer', year: 2025},
+    {title: 'Fall 2025', season: 'fall', year: 2025},
   ];
 
+  useEffect(() => {
+    const getAnimeData = async () => {
+      setLoading(true);
+      const {season, year} = tabs[activeTab];
+      const data = await getAnimeSeason(season, year);
+      setAnimelist(data);
+      setLoading(false);
+    };
+    getAnimeData();
+  }, [activeTab]);
+
   return (
-    <div className='w-full max-w-lg mx-auto mt-10'>
+    <div className=' w-5/6 mx-auto mt-10'>
       {/* Tab Navigation */}
       <div className='flex border-b'>
         {tabs.map((tab, index) => (
@@ -32,8 +47,33 @@ const Tabs = () => {
       </div>
 
       {/* Tab Content */}
-      <div className='p-4 bg-white shadow-md mt-2 rounded-lg'>
-        <p className='text-gray-700'>{tabs[activeTab].content}</p>
+      <div className='mt-2'>
+        {loading ? (
+          <p className='text-gray-500'>Loading...</p>
+        ) : animeList.length > 0 ? (
+          <div className='flex flex-wrap justify-center items-center'>
+            {animeList.map((item) => (
+              <Card key={item.mal_id}>
+                <Card.Header
+                  title={item.title}
+                  type={item.type}
+                  source={item.source}
+                />
+                <Card.Body images={item.images.jpg.large_image_url} />
+                <Card.Footer
+                  score={item.score}
+                  studio={
+                    Array.isArray(item.studios) && item.studios.length > 0
+                      ? item.studios[0].name
+                      : 'Unknown Studio'
+                  }
+                />
+              </Card>
+            ))}
+          </div>
+        ) : (
+          <p className='text-gray-500'>Tidak ada data tersedia.</p>
+        )}
       </div>
     </div>
   );
