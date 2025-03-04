@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {getAnimeSeason} from '../../Services/GetAnime';
+import {getAnimeSeason} from '../../Services/getAnime';
 import Card from './Card';
 
 const Tabs = () => {

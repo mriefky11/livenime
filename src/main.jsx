@@ -4,6 +4,7 @@ import './index.css';
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 import HomePage from './Pages/Home';
 import BookmarkPage from './Pages/Bookmark';
+import DetailAnime from './Pages/DetailAnime';
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
   {
     path: '/anime',
     element: <HomePage />,
+  },
+  {
+    path: '/detail',
+    element: <DetailAnime />,
   },
   {
     path: '/bookmark',

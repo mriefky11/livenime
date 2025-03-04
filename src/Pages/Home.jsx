@@ -1,7 +1,9 @@
 import Navbar from '../Components/Fragments/Navbar';
 import Card from '../Components/Fragments/Card';
 import Tabs from '../Components/Fragments/Tabs';
-import {getTopAnime, getPopularAnime} from '../Services/GetAnime';
+import Badge from '../Components/Elements/Bagde';
+// import {getTopAnime, getPopularAnime} from '../../Services/getAnime';
+import {getPopularAnime, getTopAnime} from '../Services/getAnime';
 import {useEffect, useState} from 'react';
 // import Footer from '../Components/Fragments/Footer';
 import {Swiper, SwiperSlide} from 'swiper/react';
@@ -73,12 +75,7 @@ const HomePage = () => {
                 <h4 className='text-xl mt-2'>({item.title_japanese})</h4>
                 <div className='flex justify-start gap-2 my-5 text-sm'>
                   {item.genres.map((g, index) => (
-                    <span
-                      key={index}
-                      className='bg-sky-500 text-white px-3 py-1 rounded-lg text-sm'
-                    >
-                      {g.name}
-                    </span>
+                    <Badge key={index}>{g.name}</Badge>
                   ))}
                 </div>
                 <p className='text-sm mt-2'>
@@ -114,7 +111,7 @@ const HomePage = () => {
         <h1 className='text-3xl font-bold text-sky-500 mt-10 border-b-3 border-sky-500'>
           Top Anime
         </h1>
-        <div className='w-5/6 flex flex-wrap justify-center mt-5'>
+        <div className='w-5/6 mt-5'>
           <Swiper
             slidesPerView={1}
             spaceBetween={10}
