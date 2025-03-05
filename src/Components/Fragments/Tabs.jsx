@@ -53,7 +53,7 @@ const Tabs = () => {
         ) : animeList.length > 0 ? (
           <div className='flex flex-wrap justify-center items-center'>
             {animeList.map((item) => (
-              <Card key={item.mal_id}>
+              <Card key={item.mal_id} id={item.mal_id}>
                 <Card.Header
                   title={item.title}
                   type={item.type}

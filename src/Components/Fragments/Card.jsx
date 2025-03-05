@@ -1,9 +1,9 @@
 import {Link} from 'react-router-dom';
 const Card = (props) => {
-  const {children} = props;
+  const {children, id} = props;
   return (
     <div className='w-52 border border-none rounded-lg shadow-xl text-center my-3 py-2 mx-5 bg-white hover:opacity-75'>
-      <Link>{children}</Link>
+      <Link to={`/anime/${id}`}>{children}</Link>
     </div>
   );
 };

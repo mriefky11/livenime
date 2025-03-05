@@ -18,6 +18,7 @@ import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import {Link} from 'react-router-dom';
 
 const HomePage = () => {
   const [topAnime, setTopAnime] = useState([]);
@@ -46,7 +47,7 @@ const HomePage = () => {
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
-          delay: 2500,
+          delay: 4000,
           disableOnInteraction: false,
         }}
         pagination={{clickable: true}}
@@ -80,9 +81,12 @@ const HomePage = () => {
                 </div>
                 <p className='text-sm mt-2'>
                   {item.synopsis.slice(0, 300)}...{' '}
-                  <a href='' className='text-sky-500 font-bold'>
+                  <Link
+                    to={`${item.mal_id}`}
+                    className='text-sky-500 font-bold'
+                  >
                     Read More
-                  </a>
+                  </Link>
                 </p>
                 <div className='flex gap-7 mt-5'>
                   <p className='font-bold'>
@@ -134,7 +138,7 @@ const HomePage = () => {
           >
             {topAnime.map((item) => (
               <SwiperSlide key={item.mal_id}>
-                <Card>
+                <Card id={item.mal_id}>
                   <Card.Header
                     title={item.title}
                     type={item.type}

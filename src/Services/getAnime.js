@@ -38,3 +38,14 @@ export const getAnimeSeason = async (season, year) => {
     return [];
   }
 };
+
+export const getDetailAnime = async (id) => {
+  try {
+    await delay(1000);
+    const res = await axios.get(`https://api.jikan.moe/v4/anime/${id}`);
+    return res.data.data;
+  } catch (err) {
+    console.error('error fetching data:', err);
+    return [];
+  }
+};
